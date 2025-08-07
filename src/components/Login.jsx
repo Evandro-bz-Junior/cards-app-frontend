@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate  } from 'react-router-dom';
- 
+ const apiUrl = import.meta.env.VITE_API_URL;
+
 
 
 export default function Login() {
@@ -21,7 +22,8 @@ export default function Login() {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/api/auth/login', formData);
+            const response = await axios.post(`${apiUrl}/api/auth/login`, formData);
+
             setMessage(response.data.message);
             setIsError(false);
 
