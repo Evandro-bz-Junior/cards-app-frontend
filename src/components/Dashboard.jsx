@@ -34,7 +34,7 @@ export default function Dashboard() {
     useEffect(() => {
         async function fetchCards() {
             try {
-                const res = await axios.get("http://localhost:3000/api/cards", {
+                const res = await axios.get(`${API_URL}/cards`, {   // <-- usa a API_URL aqui
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -67,7 +67,7 @@ export default function Dashboard() {
             };
 
 
-            const res = await axios.post("http://localhost:3000/api/cards", payload, {
+            const res = await axios.post(`${API_URL}/cards`, payload, {  // <-- usa a API_URL aqui
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -120,7 +120,7 @@ export default function Dashboard() {
                 color: nameToHex[editFormData.color] || "#0000FF",
             };
 
-            const res = await axios.put(`http://localhost:3000/api/cards/${cardId}`, payload, {
+            const res = await axios.put(`${API_URL}/cards/${cardId}`, payload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -152,7 +152,7 @@ export default function Dashboard() {
         if (!window.confirm("Tem certeza que quer deletar este card?")) return;
 
         try {
-            await axios.delete(`http://localhost:3000/api/cards/${cardId}`, {
+            await axios.delete(`${API_URL}/cards/${cardId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
