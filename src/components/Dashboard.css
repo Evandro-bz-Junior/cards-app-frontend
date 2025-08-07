@@ -1,0 +1,30 @@
+.newcard{
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.72);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(0px);
+-webkit-backdrop-filter: blur(0px); 
+}
+
+/* .cards{ 
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(14.2px);
+-webkit-backdrop-filter: blur(14.2px);
+border: 1px solid rgba(255, 255, 255, 0.64);
+} */
+  body{font-family: "Poppins", sans-serif;
+    
+background: linear-gradient(181deg, #9400D3, #4B0082);
+background-size: 400% 400%;
+animation: gradientAnimationauw54tty9 8s ease infinite;
+
+@keyframes gradientAnimationauw54tty9 {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 50%; }
+}
+ }
