@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { API_URL } from '../api';
+import { API_URL } from '../api.js';
 
 export default function Register() {
     const [formData, setFormData] = useState({
