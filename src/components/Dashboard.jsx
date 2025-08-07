@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaEdit, FaSave } from "react-icons/fa";
 import { MdDeleteForever, MdCancel } from "react-icons/md";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 import "./Dashboard.css"
 
@@ -34,9 +34,7 @@ export default function Dashboard() {
     useEffect(() => {
         async function fetchCards() {
             try {
-                const res = await axios.get(`${API_URL}/cards`, {   // <-- usa a API_URL aqui
-                    headers: { Authorization: `Bearer ${token}` },
-                });
+                const res = await axios.get(`${apiUrl}/api/cards`, { headers: { Authorization: `Bearer ${token}` } });
 
                 const cardsWithColorName = (res.data.cards || []).map((card) => ({
                     ...card,
@@ -67,9 +65,8 @@ export default function Dashboard() {
             };
 
 
-            const res = await axios.post(`${API_URL}/cards`, payload, {  // <-- usa a API_URL aqui
-                headers: { Authorization: `Bearer ${token}` },
-            });
+            const res = await axios.post(`${apiUrl}/api/cards`, payload, { headers: { Authorization: `Bearer ${token}` } });
+
 
             const newCard = {
                 ...res.data.card,
@@ -120,7 +117,7 @@ export default function Dashboard() {
                 color: nameToHex[editFormData.color] || "#0000FF",
             };
 
-            const res = await axios.put(`${API_URL}/cards/${cardId}`, payload, {
+            const res = await axios.put(`${apiUrl}/api/cards/${cardId}`, payload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -152,7 +149,7 @@ export default function Dashboard() {
         if (!window.confirm("Tem certeza que quer deletar este card?")) return;
 
         try {
-            await axios.delete(`${API_URL}/cards/${cardId}`, {
+            await axios.delete(`${apiUrl}/api/cards/${cardId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

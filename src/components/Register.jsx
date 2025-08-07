@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { API_URL } from '../api.js';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -20,8 +20,7 @@ export default function Register() {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${API_URL}/auth/register`, formData);
-
+            const response = await axios.post(`${apiUrl}/api/auth/register`, formData);
             setMessage(response.data.message);
             setIsError(false); // sucesso
         } catch (err) {
@@ -62,7 +61,7 @@ export default function Register() {
                     Registrar
                 </button>
                 <div className=' w-full text-center my-2'>
-                    <span>Possui conta? <Link to="/"  className='text-blue-400'>Faça login</Link></span>
+                    <span>Possui conta? <Link to="/" className='text-blue-400'>Faça login</Link></span>
                 </div>
 
 
